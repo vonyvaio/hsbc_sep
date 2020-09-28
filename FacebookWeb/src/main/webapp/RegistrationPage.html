@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	
+	<meta charset="ISO-8859-1">
+	<title> Registration Form Demo </title>
+	
+	
+	<script type = "text/javascript"> 
+	
+	<!-- Function to validate form fields -->
+
+		var name_flag = 0;
+		var password_flag = 0;
+		
+		var email_flag = 0;
+		var phone_flag = 0;
+		
+		var captcha_flag = 0;	
+		
+		function validate () {		
+			
+			validateCaptcha ();
+			
+			if ( name_flag && password_flag && email_flag && phone_flag && captcha_flag ) {
+								
+				document.getElementById("submitButton").disabled = false;
+				
+			}else {
+			
+				document.getElementById("submitButton").disabled = true;
+			}
+			
+		}
+		
+		
+		function validateName () {
+			
+			var name = document.getElementById ( "name" ).value;
+			
+			var message = "";			
+			
+			if ( name.length == 0 ) {
+				
+				message = "<span style = \"color:red;\"> Name Empty </span>";
+				name_flag = 0;				
+				
+			} else if ( name.match ( /^[0-9]/ ) ) { 
+				
+				message = "<span style = \"color:red;\"> Name cant start from number </span>";
+				name_flag = 0;
+				
+			} else if ( name.match ( /[^A-Za-z0-9]/ ) ) {
+				
+				message = "<span style = \"color:red;\"> Special Characters Found (only alphabets and characters allowed) </span>";
+				name_flag = 0;
+			                                                                                                                                                                   g                                     
+			} else if ( name.length < 4 ) {
+				
+				message = "<span style = \"color:red;\"> Too Short Length </span>";
+				name_flag = 0;
+				
+			} else {
+				
+				message = "<span style = \"color:green;\"> Valid Name </span>";
+				name_flag = 1;
+			}
+						
+			document.getElementById ( "name_error" ).innerHTML = message;
+		}
+		
+		
+		function validateEmail () {
+			
+			var email = document.getElementById ( "email" ).value;
+			
+			var message = "";
+			
+			email_flag = 1;
+			
+			if ( email.length == 0 ) {
+				
+				message = "<span style = \"color:red;\"> Email cannot be empty </span>";
+				email_flag = 0;
+				
+			} else if ( email.match ( /^[0-9]/ ) ) {
+				
+				message = "<span style = \"color:red;\"> Email cannot start from number </span>";
+				email_flag = 0;
+				
+			} else if ( email.match ( /[^_.A-Za-z0-9@]/ ) ) {
+				
+				message = "<span style = \"color:red;\"> Invalid Email, Invalid Characters ( only '_' , '.', numbers and digits are allowed  ) </span>";
+				email_flag = 0;
+				
+			} else if ( email.match ( /@/g ).length == 1 ) {
+				
+				message = "<span style = \"color:green;\"> Email Valid </span>";
+				email_flag = 1;
+				
+				//message = "<span style = \"color:red;\"> Invalid Email </span>";
+				//email_flag = 0;
+				
+			
+			} else {
+				
+				message = "<span style = \"color:red;\"> Invalid Email </span>";
+				email_flag = 0;
+				
+				//message = "<span style = \"color:green;\"> Email Valid </span>";
+				//email_flag = 1;
+			}			
+			
+			document.getElementById ( "email_error" ).innerHTML = message;
+			
+		}
+	
+		function validatePhone () {
+			
+			var phone = document.getElementById ( "phone" ).value;
+			
+			var numbers = /^[0-9]+$/;
+			
+			var message = "";
+			
+			if ( phone.match ( /^[0]/ ) ) { 
+				
+				message = "<span style = \"color:red;\"> Phone Number cant start from 0 </span>";
+				phone_flag = 0;
+				
+			} else if ( phone.length == 0 ) {
+				
+				message = "<span style = \"color:red;\"> Phone Number cant be empty </span>";
+				phone_flag = 0;
+				
+			}else if ( !phone.match ( numbers ) ) {
+				
+				message = "<span style = \"color:red;\"> Invalid Phone Number (Contains characters other than number) </span>";
+				phone_flag = 0;
+				
+			}else if ( phone.length == 10 ) {
+				
+				message = "<span style = \"color:green;\"> Phone Number valid </span>";
+				phone_flag = 1;
+				
+			} else {
+				
+				message = "<span style = \"color:red;\"> Invalid Phone Number Length </span>";
+				phone_flag = 0;				
+				
+			}
+			
+			document.getElementById ( "phone_error" ).innerHTML = message;
+		}
+	
+		function passwordStrength() {
+			
+			var password = document.getElementById ( "password" ).value;
+			
+			var message = "";
+			
+			if ( password.length < 4 ) {
+				
+				message = "<span style = \"color:red;\"> Password Less than 4 characters </span>";
+				password_flag = 0;
+			}
+			
+			if ( password.length > 8 ) {
+				
+				message = "<span style = \"color:red;\"> Password greater than 8 characters </span>";
+				password_flag = 0;
+			}
+			
+			if ( ( password.length >= 4 ) && ( password.length <= 8 ) ) {
+				
+				if ( ( password.length >= 4 ) && ( password.length <= 6 ) ) {
+					
+					message = "<span style = \"color:orange;\"> Password Strength Weak </span>";					
+				
+				} else if ( ( password.length > 6  ) && ( password.length < 8 ) ) {
+					
+					message = "<span style = \"color:yellow;\"> Password Strength Moderate </span>";					
+				
+				} else {
+					
+					message = "<span style = \"color:green;\"> Password Strong </span>";	
+				}
+				
+				if ( password.match ( /[a-z]/ ) && password.match ( /[A-Z]/ ) && password.match ( /[0-9]/ ) && password.match ( /[^A-Za-z0-9]/ ) ) {
+				
+					password_flag = 1;
+				
+				} else {
+					
+					message = "<span style = \"color:red;\"> Passwrod Policy does not match ( atleast one upper case letter, one lower case leter, one digit and special character ) </span>";
+					password_flag = 0;
+					
+				} 					
+			}			
+			
+			document.getElementById ( "password_message" ).innerHTML = message;
+			
+			validatePassword ();
+			
+		}	
+	
+		function validatePassword () {
+			
+			var password = document.getElementById ( "password" ).value;			
+			var c_password = document.getElementById ( "c_password" ).value;
+			
+			var message = "";
+			
+			if ( password == c_password ) {
+				
+				message = "<span style = \"color:green;\"> Password Matched </span>";
+				password_flag = 1;
+				
+			} else {
+				
+				message = "<span style = \"color:red;\"> Password Did Not Matched </span>";
+				password_flag = 0;
+			}
+				
+				
+			document.getElementById ( "password_error" ).innerHTML = message;
+
+		}		
+	
+		function refreshCaptcha () {
+			
+			var code = parseInt ( Math.random () * 10000 );
+			
+			document.getElementById ( "captcha_code" ).value = code;
+			
+		}
+		
+		function validateCaptcha () {
+			
+			var captcha = document.getElementById ( "captcha_code" ).value;
+			var c_captcha = document.getElementById ( "c_captcha" ).value;
+			
+			if ( captcha.length == 0 ) {
+				
+				captcha_flag = 0;
+			
+			} else if ( captcha == c_captcha ) {				
+				
+				captcha_flag = 1;
+			
+			} else { 
+			
+				captcha_flag = 0;
+			}
+				
+		}
+		
+		
+	
+	</script>
+	
+	
+</head>
+
+<body>
+
+<form action = "RegistrationServlet" method = "POST">
+
+	<table>
+
+		<tr>
+		
+			<td> Name </td>
+			<td> : </td>
+			<td> <input type = "text" name = "name" id = "name" onkeyup="validateName()" required> </td>
+			<td> <div id = "name_error"> </div> </td>		
+		
+		</tr>
+		
+		<tr>
+	
+			<td> Password </td>
+			<td> : </td>
+			<td> <input type = "password" name = "password" id = "password" onkeyup = "passwordStrength()" required> </td>
+			<td> <div id = "password_message"> </div> </td>
+		
+		</tr>
+		
+		<tr>
+	
+			<td> Confirm Password </td>
+			<td> : </td>
+			<td> <input type = "password" id = "c_password" onkeyup = "validatePassword()" required> </td>
+			<td> <div id = "password_error"> </div> </td>
+	
+		</tr>
+		
+		<tr>
+		
+			<td> Email </td>
+			<td> : </td>
+			<td> <input type = "email" name = "email" id = "email" onkeyup="validateEmail()" required> </td>
+			<td> <div id = "email_error" > </div> </td>
+			
+		</tr>
+		
+		<tr>
+		
+			<td> Phone </td>
+			<td> : </td>
+			<td> <input type = "text" name = "phone" id = "phone" onkeyup = "validatePhone()" required> </td>
+			<td> <div id = "phone_error" > </div> </td>
+			
+		</tr>
+		
+		<tr>
+			
+			<td colspan = "4"> <br> </td>
+		
+		</tr>
+		
+		<tr>
+		
+			<td> Captcha </td>
+			<td> : </td>
+			<td> <input type=text disabled id="captcha_code" value = ""> </td>
+			<td> <button type = "button" onclick = "refreshCaptcha()"> Refresh Captcha </button> </td>
+			
+		</tr>
+		
+		<tr>
+		
+			<td> Enter Captcha </td>
+			<td> : </td>
+			<td> <input type = "text" id = "c_captcha"> </td>
+			<td> <button type = "button" onclick = "validate()"> Validate </button> </td>
+			
+		</tr>
+		
+		<tr>
+			
+			<td colspan = "4"> <br> </td>
+		
+		</tr>
+		
+		<tr>
+		
+			<td colspan = "2" align = "right"> <button type = "submit" id = "submitButton" disabled> Register </button> </td>
+			<td colspan = "2"> <button type = "reset"> Reset </button> </td>
+					
+		</tr>		
+		
+	</table>
+
+</form>
+
+</body>
+
+</html>

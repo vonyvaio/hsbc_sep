@@ -1,0 +1,30 @@
+connect 'jdbc:derby:d:/database/facebook;create=true;user=ashutosh;password=4159';
+select * from FacebookUser;
+--------------------------------------------------------------------------------------------
+
+create table FacebookUser (
+
+	NAME VARCHAR (20),
+	PASSWORD VARCHAR (20),
+
+	EMAIL VARCHAR (20),
+	PHONE VARCHAR (50)	
+);
+
+insert into FacebookUser values ( 'abc', 'qwerty', 'abc@email.com', '1111111111' );
+
+select * from FacebookUser;
+
+
+UPDATE FacebookUser SET NAME = 'ashutosh', PASSWORD = '12345' , EMAIL = 'ashu@email', PHONE = '2222222222' WHERE NAME = 'abc' and PASSWORD = 'qwerty';
+
+
+insert into FacebookUser values ( 'xyz', '12345', 'xyz@email.com', '3333333333' ), ( 'uno', 'qwerty', 'uno@email.com', '6666666666' );
+
+NAME                |PASSWORD            |EMAIL               |PHONE
+-----------------------------------------------------------------------------------------------------------------
+abc                 |qwerty              |abc@email.com       |1111111111
+xyz                 |12345               |xyz@email.com       |3333333333
+uno                 |qwerty              |uno@email.com       |6666666666
+Ashutosh            |12345678            |ashu@email.com      |7986541236
+hexcode             |password            |password@email.com  |9658741265
