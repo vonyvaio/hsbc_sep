@@ -12,4 +12,6 @@ public interface DAOLayerInterface {
 	
 	public List < info > FriendList ( info user );
 	
+	public int checkForValidEmail ( String email );
+	
 }

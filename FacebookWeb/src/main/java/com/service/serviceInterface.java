@@ -33,5 +33,11 @@ public class serviceInterface implements serviceLayerInterface {
 		
 		return dao.createProfile ( user );		
 	}
+	
+	@Override
+	public int checkForValidEmail ( String email ) {
+		
+		return dao.checkForValidEmail ( email );
+	}
 
 }

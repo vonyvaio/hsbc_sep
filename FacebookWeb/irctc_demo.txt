@@ -1,0 +1,54 @@
+connect 'jdbc:derby:d:/database/irctc;create=true;user=ashutosh;password=4159';
+select * from irctc;
+
+create table irctc (
+
+	COUNTRY VARCHAR (20),
+	CITY VARCHAR (20)
+);
+
+
+insert into irctc values ( 'india', 'abhaipur');
+insert into irctc values ( 'india', 'abohar'), ( 'india', 'agasod'), ( 'india', 'babrala'), ( 'india', 'bad'), ( 'india', 'mumbai'), ( 'india', 'chennai'), ( 'india', 'delhi');
+insert into irctc values ( 'india', 'nagpur'), ( 'india', 'goa'), ( 'india', 'chaksu'), ( 'india', 'indore'), ( 'india', 'hyderabad'), ( 'india', 'pune'), ( 'india', 'kolkata');
+
+
+insert into irctc values ( 'america', 'penn station'), ( 'america', 'toronto'), ( 'america', 'grand central'), ( 'america', 'jamaica'), ( 'america', 'chicago'), ( 'america', 'hoboken'), ( 'america', 'los angeles'), ( 'america', 'montreal');
+insert into irctc values ( 'america', 'ogilvie'), ( 'america', 'newark'), ( 'america', 'world trade'), ( 'america', 'washington'), ( 'america', 'millennium'), ( 'america', 'texas'), ( 'america', 'new york'), ( 'america', 'fyrkey');
+
+select distinct COUNTRY from irctc;
+SELECT CITY FROM irctc where COUNTRY = india;
+
+COUNTRY             |CITY
+-----------------------------------------
+india               |abhaipur
+india               |abohar
+india               |agasod
+india               |babrala
+india               |bad
+india               |mumbai
+india               |chennai
+india               |delhi
+india               |nagpur
+india               |goa
+india               |chaksu
+india               |indore
+india               |hyderabad
+india               |pune
+india               |kolkata
+america             |penn station
+america             |toronto
+america             |grand central
+america             |jamaica
+america             |chicago
+america             |hoboken
+america             |los angeles
+america             |montreal
+america             |ogilvie
+america             |newark
+america             |world trade
+america             |washington
+america             |millennium
+america             |texas
+america             |new york
+america             |fyrkey

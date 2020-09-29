@@ -11,4 +11,7 @@ public interface serviceLayerInterface {
 	public int loginProfile ( info user );
 	
 	public List < info > FriendList ( info user );
+	
+	public int checkForValidEmail ( String email );
+	
 }

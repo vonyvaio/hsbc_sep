@@ -33,6 +33,32 @@ public class DAOInterface implements DAOLayerInterface {
 		}
 	}
 	
+	@Override
+	public int checkForValidEmail ( String email ) {
+		
+		try {
+		
+			// prepare query
+			
+			PreparedStatement ps = con.prepareStatement ( "SELECT * FROM FacebookUser where EMAIL = ?" );
+			
+			ps.setString ( 1, email );
+			
+			ResultSet rs = ps.executeQuery ();
+			
+			if ( rs.next () ) {
+				
+				return 1;
+			}
+			
+		} catch ( SQLException sql ) {
+			
+			sql.printStackTrace ();
+		}
+		
+		return 0;
+	}
+	
 	
 	@Override
 	public List < info > FriendList ( info user ) {

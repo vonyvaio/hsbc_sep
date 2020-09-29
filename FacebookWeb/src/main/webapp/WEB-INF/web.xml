@@ -22,6 +22,24 @@
   	<description></description>
   	<servlet-class>com.controller.FriendList</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>checkForValidEmail</servlet-name>
+  	<display-name>checkForValidEmail</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.checkForValidEmail</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>irctcGetRailwayStation</servlet-name>
+  	<display-name>irctcGetRailwayStation</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.irctcGetRailwayStation</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>irctcGetCountry</servlet-name>
+  	<display-name>irctcGetCountry</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.irctcGetCountry</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationServlet</servlet-name>
   	<url-pattern>/RegistrationServlet</url-pattern>
@@ -33,5 +51,17 @@
   <servlet-mapping>
   	<servlet-name>FriendList</servlet-name>
   	<url-pattern>/FriendList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>checkForValidEmail</servlet-name>
+  	<url-pattern>/checkForValidEmail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>irctcGetRailwayStation</servlet-name>
+  	<url-pattern>/irctcGetRailwayStation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>irctcGetCountry</servlet-name>
+  	<url-pattern>/irctcGetCountry</url-pattern>
   </servlet-mapping>
 </web-app>
