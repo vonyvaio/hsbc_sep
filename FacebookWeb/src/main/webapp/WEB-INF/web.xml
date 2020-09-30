@@ -40,6 +40,24 @@
   	<description></description>
   	<servlet-class>com.controller.irctcGetCountry</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>getCountry</servlet-name>
+  	<display-name>getCountry</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.getCountry</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>getState</servlet-name>
+  	<display-name>getState</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.getState</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>getCity</servlet-name>
+  	<display-name>getCity</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.getCity</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationServlet</servlet-name>
   	<url-pattern>/RegistrationServlet</url-pattern>
@@ -63,5 +81,17 @@
   <servlet-mapping>
   	<servlet-name>irctcGetCountry</servlet-name>
   	<url-pattern>/irctcGetCountry</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getCountry</servlet-name>
+  	<url-pattern>/getCountry</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getState</servlet-name>
+  	<url-pattern>/getState</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getCity</servlet-name>
+  	<url-pattern>/getCity</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -35,14 +35,14 @@ public class irctcGetRailwayStation extends HttpServlet {
 		response.setContentType ( "text/palin" );
 		PrintWriter out = response.getWriter ();
 		
-		out.println ( "<select id=\"station\" name=\"station\">" );
+		String ss = "";
 		
 		for ( String s : station_list ) {
 			
-			out.println ( "<option value=\"" + s + "\">"+ s +"</option>" );
+			ss = ss + "<option value='" + s + "'>" + s + "</option>";
 		}
 		
-		out.println ( "</select>" );
+		out.println ( ss );
 	}
 
 }

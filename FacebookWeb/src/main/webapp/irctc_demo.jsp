@@ -12,11 +12,9 @@
 		
 		<script type = "text/javascript">
 
-			var country="";
-
 			function getStation () {
 
-				var country = "india";
+				var country = document.getElementById ( "country" ).value;
 
 				var keyword = document.getElementById ( "stationName" ).value;
 
@@ -28,7 +26,7 @@
 	
 						// open connection with server
 	
-					xhr.open ( "POST", "irctcGetRailwayStation?country=" + country + "&keyword=" + keyword, true );
+					xhr.open ( "GET", "irctcGetRailwayStation?country=" + country + "&keyword=" + keyword, true );
 	
 						// send request
 	
@@ -41,17 +39,13 @@
 						if ( xhr.readyState == 4 ) {
 	
 							message = xhr.responseText;
-	
+
 							document.getElementById ( "station" ).innerHTML = message;
 						}
 					}
 
-				} else {
-
-					var message = "No Cities Found";
-
-					document.getElementById ( "station" ).innerHTML = message;
 				}
+
 			}
 			 
 
@@ -63,7 +57,7 @@
 
 					// open connection with server
 
-				xhr.open ( "POST", "irctcGetCountry", true );
+				xhr.open ( "GET", "irctcGetCountry", true );
 
 					// send request
 
@@ -82,6 +76,11 @@
 				}
 			}
 
+			function setText () {
+
+				document.getElementById ( "stationName" ).value = document.getElementById ( "station" ).value;
+			}
+
 		</script>
 	
 	
@@ -96,7 +95,7 @@
 		<tr>		
 			<td> Country </td> 
 			<td> : </td>
-			<td> <div id="country"> </div> </td>
+			<td> <select id='country' name='country'></select> </td>
 			<td> </td>
 					
 		</tr>
@@ -105,14 +104,13 @@
 			<td> Enter Station </td> 
 			<td> : </td>
 			<td> <input type="text" name="stationName" id="stationName" onkeyup="getStation()"> </td>
-			<td> <div id="station"> </div> </td>
+			<td> <select id="station" name="station" onchange="setText()"> </select> </td>
 					
 		</tr>
 	
 	</table>
 
 </form>
-
 
 </body>
 

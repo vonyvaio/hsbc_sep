@@ -52,3 +52,68 @@ america             |millennium
 america             |texas
 america             |new york
 america             |fyrkey
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+create table country (
+
+	COUNTRY VARCHAR (20) PRIMARY KEY
+);
+
+insert into country values ( 'india' ), ( 'america' ), ( 'china' );
+select * from country;
+
+create table state (
+
+	STATE VARCHAR (20) PRIMARY KEY,
+	
+	COUNTRY VARCHAR (20),
+	
+	FOREIGN KEY (COUNTRY) REFERENCES country (COUNTRY) 
+
+);
+
+insert into state values ( 'maharashtra', 'india' ), ( 'gujrat', 'india' ), ( 'kerela', 'india' ), ( 'punjab', 'india' ), ( 'madhya pradesh', 'india' );
+insert into state values ( 'california', 'america' ), ( 'virginia', 'america' ), ( 'texas', 'america' ), ( 'maryland', 'america' ), ( 'pennsylvania', 'america' );
+insert into state values ( 'hainan', 'china' ), ( 'zhejiang', 'china' ), ( 'jiangsu', 'china' ), ( 'sichuan', 'china' ), ( 'shandong', 'china' );
+
+select * from state;
+
+create table city (
+
+	CITY VARCHAR (20) PRIMARY KEY,
+	
+	STATE VARCHAR (20),
+	
+	FOREIGN KEY (STATE) REFERENCES state (STATE) 
+
+);
+
+insert into city values ( 'kolkata' , 'maharashtra' ), ( 'nashik' , 'maharashtra' ), ( 'nagpur' , 'maharashtra' ), ( 'mumbai' , 'maharashtra' ), ( 'pune' , 'maharashtra' );
+insert into city values ( 'surat', 'gujrat' ), ( 'ahmedabad', 'gujrat' ), ( 'rajkot', 'gujrat' ), ( 'vadodara', 'gujrat' ), ( 'jamnagar', 'gujrat' );
+insert into city values ( 'kochi', 'kerela' ), ( 'kozhikode', 'kerela' ), ( 'thrissur', 'kerela' ), ( 'kollam', 'kerela' ), ( 'kottayam', 'kerela' );
+insert into city values ( 'ludhiana', 'punjab' ), ( 'jalandhar', 'punjab' ), ( 'amritsar', 'punjab' ), ( 'patiala', 'punjab' ), ( 'bathinda', 'punjab' );
+insert into city values ( 'bhopal', 'madhya pradesh' ), ( 'indore', 'madhya pradesh' ), ( 'jabalpur', 'madhya pradesh' ), ( 'Gwalior', 'madhya pradesh' ), ( 'ujjain', 'madhya pradesh' );
+
+select * from city;
+
+insert into city values ( 'san francisco', 'california' ), ( 'california', 'california' ), ( 'sacramento', 'california' ), ( 'los angeles', 'california' ), ( 'san diego', 'california' );
+insert into city values ( 'richmond', 'virginia' ), ( 'norfolk', 'virginia' ), ( 'alexandria', 'virginia' ), ( 'roanoke', 'virginia' ), ( 'williamsburg', 'virginia' );
+insert into city values ( 'houston', 'texas' ), ( 'dallas', 'texas' ), ( 'austin', 'texas' ), ( 'san antonio', 'texas' ), ( 'el paso', 'texas' );
+insert into city values ( 'baltimore', 'maryland' ), ( 'ocean city', 'maryland' ), ( 'annapolis', 'maryland' ), ( 'fredrick', 'maryland' ), ( 'bethesda', 'maryland' );
+insert into city values ( 'philadelphia', 'pennsylvania' ), ( 'pittsburgh', 'pennsylvania' ), ( 'harrisburg', 'pennsylvania' ), ( 'scranton', 'pennsylvania' ), ( 'allentown', 'pennsylvania' );
+
+select * from city;
+
+insert into city values ( 'haikou', 'hainan' ), ( 'sanya', 'hainan' ), ( 'wenchang', 'hainan' ), ( 'qionghai', 'hainan' ), ( 'dongfang', 'hainan' );
+insert into city values ( 'hangzhou', 'zhejiang' ), ( 'wenzhou', 'zhejiang' ), ( 'ningbo', 'zhejiang' ), ( 'jiaxing', 'zhejiang' ), ( 'shaoxing', 'zhejiang' );
+insert into city values ( 'nanjing', 'jiangsu' ), ( 'suzhou', 'jiangsu' ), ( 'wuxi', 'jiangsu' ), ( 'yangzhou', 'jiangsu' ), ( 'changzhou', 'jiangsu' );
+insert into city values ( 'chengdu', 'sichuan' ), ( 'leshan', 'sichuan' ), ( 'yaan', 'sichuan' ), ( 'mianyang', 'sichuan' ), ( 'zigong', 'sichuan' );
+insert into city values ( 'jinan', 'shandong' ), ( 'qingdao', 'shandong' ), ( 'yantai', 'shandong' ), ( 'weifang', 'shandong' ), ( 'weihai', 'shandong' );
+
+select * from city;
+
+
+
+select STATE from state where COUNTRY = 'india';
